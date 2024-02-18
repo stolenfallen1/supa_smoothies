@@ -7,7 +7,7 @@ export default function Create() {
 
     const [title, setTitle] = useState<string>("");
     const [method, setMethod] = useState<string>("");
-    const [rating, setRating] = useState<number>();
+    const [rating, setRating] = useState<number>(0);
     const [formError, setFormError] = useState<string | null>(null);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {

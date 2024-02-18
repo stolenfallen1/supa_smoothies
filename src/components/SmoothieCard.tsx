@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { supabase } from "../config/supabaseClient";
 
-interface Smoothie {
+export interface Smoothie {
     id: number;
     title: string;
     method: string;
@@ -11,9 +11,10 @@ interface Smoothie {
 
 export interface SmoothieCardProps {
     smoothie: Smoothie;
+    onDelete: (id: number) => void;
 }
 
-export function SmoothieCard({ smoothie }: SmoothieCardProps) {
+export function SmoothieCard({ smoothie, onDelete }: SmoothieCardProps) {
     const { id, title, method, rating } = smoothie;
 
     const handleDelete = async () => {
@@ -29,6 +30,7 @@ export function SmoothieCard({ smoothie }: SmoothieCardProps) {
         }
 
         if (data) {
+            onDelete(id);
             alert("Smoothie recipe deleted successfully");
         }
     };
